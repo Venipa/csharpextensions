@@ -2,14 +2,14 @@
     "name": "csharpextensions",
     "displayName": "C# Extensions",
     "description": "C# IDE Extensions for VSCode",
-    "author": "Jonathan Channon",
+    "author": "Venipa",
     "license": "SEE LICENSE IN license.txt",
     "version": "1.3.0",
-    "publisher": "jchannon",
+    "publisher": "venipa",
     "engines": {
         "vscode": "^1.5.0"
     },
-    "repository": "https://github.com/jchannon/csharpextensions",
+    "repository": "https://github.com/Venipa/csharpextensions",
     "icon": "logo.png",
     "categories": [
         "Languages",
@@ -19,6 +19,7 @@
     "activationEvents": [
         "onLanguage:csharp",
         "onCommand:csharpextensions.createClass",
+        "onCommand:csharpextensions.createEnum",
         "onCommand:csharpextensions.createInterface"
     ],
     "main": "./out/src/extension",
@@ -31,6 +32,10 @@
             {
                 "command": "csharpextensions.createInterface",
                 "title": "New C# Interface"
+            },
+            {
+                "command": "csharpextensions.createEnum",
+                "title": "New C# Enum"
             }
         ],
         "menus": {
@@ -42,6 +47,10 @@
                 {
                     "group": "navigation@-1",
                     "command": "csharpextensions.createInterface"
+                },
+                {
+                    "group": "navigation@-1",
+                    "command": "csharpextensions.createEnum"
                 }
             ]
         },

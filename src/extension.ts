@@ -32,6 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
     //context.subscriptions.push(disposable);
     context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createClass', createClass));
     context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createInterface', createInterface));
+    context.subscriptions.push(vscode.commands.registerCommand('csharpextensions.createEnum', createEnum));
 
     const codeActionProvider = new CodeActionProvider();
     let disposable = vscode.languages.registerCodeActionsProvider(documentSelector, codeActionProvider);
@@ -44,6 +45,10 @@ function createClass(args) {
 
 function createInterface(args) {
     promptAndSave(args, 'interface');
+}
+
+function createEnum(args) {
+    promptAndSave(args, 'enum');
 }
 
 function promptAndSave(args, templatetype: string) {
@@ -137,6 +142,7 @@ function openTemplateAndSaveNewFile(type: string, namespace: string, filename: s
             let text = doc.getText();
             text = text.replace('${namespace}', namespace);
             text = text.replace('${classname}', filename);
+            text = text.replace('${enumname}', filename);
             let cursorPosition = findCursorInTemlpate(text);
             text = text.replace('${cursor}', '');
             fs.writeFileSync(originalfilepath, text);
